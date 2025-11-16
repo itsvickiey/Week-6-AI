@@ -1,5 +1,6 @@
-Edge AI Recyclable Classification Prototype
-📋 Project Overview
+# Edge AI Recyclable Classification Prototype
+
+## 📋 Project Overview
 This project implements an Edge AI prototype for classifying recyclable items using TensorFlow Lite. The solution demonstrates how lightweight machine learning models can be deployed on edge devices like Raspberry Pi for real-time inference applications.
 
 🎯 Project Goals
