@@ -3,7 +3,7 @@
 ## 📋 Project Overview
 This project implements an Edge AI prototype for classifying recyclable items using TensorFlow Lite. The solution demonstrates how lightweight machine learning models can be deployed on edge devices like Raspberry Pi for real-time inference applications.
 
-🎯 Project Goals
+## 🎯 Project Goals
 Train a lightweight CNN model for image classification
 
 Convert the model to TensorFlow Lite format
@@ -14,7 +14,7 @@ Demonstrate real-time inference capabilities
 
 Analyze performance metrics and benefits of Edge AI
 
-🛠️ Technical Stack
+## 🛠️ Technical Stack
 Framework: TensorFlow & TensorFlow Lite
 
 Language: Python 3.8+
@@ -25,7 +25,7 @@ Target Hardware: Raspberry Pi (simulated)
 
 Libraries: NumPy, Matplotlib, PIL, scikit-learn
 
-📁 Project Structure
+## 📁 Project Structure
 text
 edge-ai-recyclable-classifier/
 │
@@ -35,8 +35,8 @@ edge-ai-recyclable-classifier/
 ├── performance_report.py        # Performance analysis and visualization
 ├── recyclable_classifier.tflite # Generated TFLite model (after running)
 └── README.md                    # This file
-🚀 Quick Start
-Prerequisites
+## 🚀 Quick Start
+### Prerequisites
 bash
 pip install tensorflow tensorflow-datasets numpy matplotlib pillow scikit-learn
 Step 1: Train and Convert Model
@@ -57,10 +57,10 @@ from raspberry_pi_simulation import main
 main()
 Step 4: Generate Performance Report
 python
-# Create comprehensive report
+### Create comprehensive report
 from performance_report import generate_performance_report
 metrics = generate_performance_report(history, test_accuracy, tflite_accuracy, avg_inf_time)
-📊 Model Architecture
+## 📊 Model Architecture
 The prototype uses a lightweight CNN architecture optimized for edge deployment:
 
 text
