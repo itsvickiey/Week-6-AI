@@ -1,161 +1,146 @@
-# Edge AI Recyclable Classification Prototype
+# 🌿 Edge AI Recyclable Classification Prototype
 
-## 📋 Project Overview
-This project implements an Edge AI prototype for classifying recyclable items using TensorFlow Lite. The solution demonstrates how lightweight machine learning models can be deployed on edge devices like Raspberry Pi for real-time inference applications.
+A lightweight, real-time recyclable item classifier powered by TensorFlow Lite.
 
-## 🎯 Project Goals
-Train a lightweight CNN model for image classification
+## 📌 Overview
 
-Convert the model to TensorFlow Lite format
+This project demonstrates how Edge AI can be used to classify recyclable materials directly on low-power devices such as Raspberry Pi. By training a compact CNN model and converting it to TensorFlow Lite, the system delivers real-time inference, low latency, and efficient on-device computation—ideal for smart recycling bins and environmental IoT solutions.
 
-Test and optimize for edge device deployment
+## 🎯 Objectives
 
-Demonstrate real-time inference capabilities
+Develop a lightweight CNN model for image classification
 
-Analyze performance metrics and benefits of Edge AI
+Convert the trained model into TensorFlow Lite format
 
-## 🛠️ Technical Stack
-Framework: TensorFlow & TensorFlow Lite
+Test performance differences between TensorFlow and TFLite
+
+Simulate deployment on an edge device (Raspberry Pi)
+
+Analyze speed, accuracy, and real-time inference capabilities
+
+## 🛠️ Tech Stack
+
+Frameworks: TensorFlow, TensorFlow Lite
 
 Language: Python 3.8+
 
-Simulation Environment: Google Colab / Local Python
+Environment: Google Colab / Local Machine
 
-Target Hardware: Raspberry Pi (simulated)
+Hardware Target: Raspberry Pi (simulated)
 
 Libraries: NumPy, Matplotlib, PIL, scikit-learn
 
 ## 📁 Project Structure
-text
 edge-ai-recyclable-classifier/
 │
-├── recyclable_classifier.py      # Main model training and conversion
-├── tflite_testing.py            # TFLite model testing and comparison
-├── raspberry_pi_simulation.py   # Edge device deployment simulation
-├── performance_report.py        # Performance analysis and visualization
-├── recyclable_classifier.tflite # Generated TFLite model (after running)
-└── README.md                    # This file
-## 🚀 Quick Start
-### Prerequisites
-bash
+├── recyclable_classifier.py       # Model training & TFLite conversion
+├── tflite_testing.py              # Accuracy comparison & inference tests
+├── raspberry_pi_simulation.py     # Edge deployment simulation
+├── performance_report.py          # Metrics visualization & report generation
+├── recyclable_classifier.tflite   # Exported TFLite model
+└── README.md                      # Documentation
+
+## 🚀 Getting Started
+1️⃣ Install Dependencies
 pip install tensorflow tensorflow-datasets numpy matplotlib pillow scikit-learn
-Step 1: Train and Convert Model
-python
-# Run the main training script
+
+2️⃣ Train and Convert Model
 from recyclable_classifier import main
 classifier, history, test_accuracy, test_loss = main()
-Step 2: Test TFLite Model
-python
-# Test the converted model
+
+3️⃣ Evaluate TFLite Model
 from tflite_testing import TFLiteTester
+
 tester = TFLiteTester('recyclable_classifier.tflite')
 tflite_accuracy, avg_inf_time, fps = tester.test_batch_inference(test_data, 100)
-Step 3: Simulate Edge Deployment
-python
-# Run Raspberry Pi simulation
+
+4️⃣ Simulate Edge Deployment
 from raspberry_pi_simulation import main
 main()
-Step 4: Generate Performance Report
-python
-### Create comprehensive report
+
+5️⃣ Generate Performance Report
 from performance_report import generate_performance_report
 metrics = generate_performance_report(history, test_accuracy, tflite_accuracy, avg_inf_time)
-## 📊 Model Architecture
-The prototype uses a lightweight CNN architecture optimized for edge deployment:
 
-text
+## 🧠 Model Architecture
+
+A compact CNN optimized for edge inference:
+
 Input (32×32×3)
-  ↓
-Conv2D (32 filters, 3×3) + ReLU
-  ↓
-MaxPooling (2×2)
-  ↓
-Conv2D (64 filters, 3×3) + ReLU
-  ↓
-MaxPooling (2×2)
-  ↓
-Conv2D (64 filters, 3×3) + ReLU
-  ↓
+↓
+Conv2D (32 filters) + ReLU
+↓
+MaxPooling
+↓
+Conv2D (64 filters) + ReLU
+↓
+MaxPooling
+↓
+Conv2D (64 filters) + ReLU
+↓
 Flatten
-  ↓
-Dense (64 units) + ReLU
-  ↓
+↓
+Dense (64) + ReLU
+↓
 Dropout (0.5)
-  ↓
-Output (10 classes) + Softmax
-🎮 Usage Examples
-Real-time Classification Simulation
-python
+↓
+Softmax (10 classes)
+
+## 🎮 Example Usage
+Real-Time Classification Demo
 from raspberry_pi_simulation import EdgeAISimulator
 
-# Initialize simulator
 simulator = EdgeAISimulator('recyclable_classifier.tflite')
-
-# Run real-time demo (30 seconds)
 simulator.run_real_time_demo(duration=30)
-Model Comparison
-python
+
+Compare Original vs TFLite Model
 from tflite_testing import compare_models
 
-# Compare original vs TFLite model
 compare_models(classifier.model, 'recyclable_classifier.tflite', test_data)
-📈 Performance Metrics
-Expected Results
-Metric	Value
-Test Accuracy	70-85%
-TFLite Accuracy	68-84%
+
+## 📈 Performance Summary
+Metric	Expected Value
+Test Accuracy	70–85%
+TFLite Accuracy	68–84%
 Model Size	< 2 MB
-Inference Time (RPi)	< 50 ms
-FPS (Real-time)	> 15
+Avg Inference Time	< 50 ms (Raspberry Pi)
+Real-Time FPS	> 15
 Conversion Loss	< 2%
-Optimization Features
-Quantization: FP16 optimization for size reduction
+## 🔧 Optimizations
 
-Pruning: Model optimization for faster inference
+FP16 Quantization — reduces model size
 
-Hardware Acceleration: Compatible with Edge TPU
+Pruning — improves inference speed
 
-Memory Efficient: Minimal RAM footprint
+Hardware Acceleration — Edge TPU ready
 
-🌟 Edge AI Benefits
-1. Low Latency
-Local processing eliminates network delay
+Low Memory Footprint — suitable for IoT devices
 
-Real-time inference for immediate results
+## 🌟 Benefits of Edge AI
 
-2. Privacy & Security
-Data processed locally, never leaves the device
+Low Latency: Real-time classification without cloud delay
 
-No sensitive information transmitted to cloud
+Privacy: No sensitive data sent over the network
 
-3. Reliability
-Functions without internet connection
+Resilience: Works offline, independent of connectivity
 
-Consistent performance in varied network conditions
+Cost Savings: Reduced cloud compute usage
 
-4. Cost Efficiency
-Reduced cloud computing costs
+Bandwidth Efficient: Only key results transmitted
 
-No ongoing API fees
-
-5. Bandwidth Optimization
-Minimal data transmission
-
-Suitable for low-bandwidth environments
-
-🔧 Customization Guide
-Using Your Own Dataset
-python
+## 🧩 Customization Guide
+Use Your Own Dataset
 def load_custom_dataset(data_path):
-    # Implement your dataset loading logic
-    # Expected format: (x_train, y_train), (x_test, y_test)
     return train_data, test_data
-Model Customization
-python
+
+Customize Model Architecture
 def build_custom_model(input_shape, num_classes):
     model = keras.Sequential([
-        # Add your custom layers here
         layers.Conv2D(16, (3, 3), activation='relu', input_shape=input_shape),
-        # ... more layers
+        # Add more layers as needed...
     ])
     return model
+
+📜 License
+
+This project is open-source and available for educational and research use.
